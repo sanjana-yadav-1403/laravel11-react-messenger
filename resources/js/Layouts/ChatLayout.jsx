@@ -153,7 +153,7 @@ const ChatLayout = ({ children }) => {
                     {sortedConversations &&
                         sortedConversations.map((conversation) => (
                             <ConversationItem
-                                key={`$a={conversation.is_group
+                                key={`${conversation.is_group
                                     ? "group_"
                                     : "user_"
                                 }${conversation.id}`}
