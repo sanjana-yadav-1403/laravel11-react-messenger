@@ -1,5 +1,5 @@
 import { Fragment, useEffect, useMemo, useState } from "react";
-import { Dialog,  Transition } from "@headlessui/react";
+import { Dialog,  DialogPanel,  Transition, TransitionChild } from "@headlessui/react";
 import {
     PaperClipIcon,
     XMarkIcon,
@@ -54,7 +54,7 @@ export default function AttachmentPreviewModal({
                 className="relative z-50"
                 onClose={close}
             >
-                <Transition.Child
+                <TransitionChild
                     as={Fragment}
                     enter="ease-out duration-300"
                     enterFrom="opacity-0"
@@ -64,10 +64,10 @@ export default function AttachmentPreviewModal({
                     leaveTo="opacity-0"
                 >
                     <div className="fixed inset-0 bg-black/25"></div>
-                </Transition.Child>
+                </TransitionChild>
                 <div className="fixed inset-0 overflow-y-auto">
                     <div className="h-screen w-screen">
-                        <Transition.Child 
+                        <TransitionChild 
                             as={Fragment}
                             enter="ease-out duration-300"
                             enterFrom="opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95"
@@ -76,7 +76,7 @@ export default function AttachmentPreviewModal({
                             leaveFrom="opacity-100 translate-y-0 sm:scale-100"
                             leaveTo="opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95"
                         >
-                            <Dialog.Panel className="flex flex-col w-full h-full transform overflow-hidden bg-slate-800 text-left align-middle shadow-xl transition-all">
+                            <DialogPanel className="flex flex-col w-full h-full transform overflow-hidden bg-slate-800 text-left align-middle shadow-xl transition-all">
                                 <button
                                     onClick={close}
                                     className="absolute right-3 top-3 w-10 h-10 rounded-full hover:bg-black/10 transition flex items-center justify-center text-gray-100 z-40">
@@ -149,8 +149,8 @@ export default function AttachmentPreviewModal({
                                         )}
 
                                     </div>
-                            </Dialog.Panel>
-                        </Transition.Child>
+                            </DialogPanel>
+                        </TransitionChild>
                     </div>
                 </div>
             </Dialog>

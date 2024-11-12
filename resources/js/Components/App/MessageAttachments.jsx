@@ -17,7 +17,7 @@ const MessageAttachments = ({attachments, attachmentClick}) => {
                     className={
                         `group flex flex-col items-center justify-center text-gray-500 
                         relative cursor-pointer ` + 
-                        (isAudio(attachment)
+                        (isAudio(attachment) 
                             ? "w-84" 
                             : "w-32 aspect-square bg-blue-100")
                     }

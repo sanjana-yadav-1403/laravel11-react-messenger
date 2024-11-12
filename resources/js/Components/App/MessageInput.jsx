@@ -10,7 +10,7 @@ import {
 } from "@heroicons/react/24/solid";
 import NewMessageInput from "./NewMessageInput";
 import EmojiPicker from 'emoji-picker-react';
-import { Popover, Transition } from "@headlessui/react";
+import { Popover, PopoverButton, PopoverPanel, Transition } from "@headlessui/react";
 import {isAudio, isImage} from "@/helpers";
 import AttachmentPreview from "./AttachmentPreview";
 import CustomAudioPlayer from "./CustomAudioPlayer";
@@ -144,7 +144,7 @@ const MessageInput = ({conversation = null}) => {
                     </button>
                 </div>
                 { !!uploadProgress && (
-                    <progress 
+                    <progress
                         className="progress progress-info w-full"
                         value={uploadProgress}
                         max="100"
@@ -154,12 +154,12 @@ const MessageInput = ({conversation = null}) => {
                     <p className="text-xs text-red-400">{inputErrorMessage}</p>
                 )}
                 <div className="flex flex-wrap gap-1 mt-2">
-                    {chosenFiles.map((file) => {
+                    {chosenFiles.map((file) => (
                         <div
                             key={file.file.name}
                             className={
                                 `relative flex justify-between cursor-pointer ` +
-                                (!isImage(file.file) ? "w-[240px" : "")
+                                (!isImage(file.file) ? "w-[240px]" : "")
                             }
                         >
                             {isImage(file.file) && (
@@ -194,15 +194,15 @@ const MessageInput = ({conversation = null}) => {
                                 <XCircleIcon className="w-6" />
                             </button>
                         </div>
-                    })}
+                    ))}
                 </div>
             </div>
             <div className="order-3 xs:order-3 p-2 flex">
                 <Popover className="relative">
-                    <Popover.Button className="p-1 text-gray-400 hover:text-gray-300">
+                    <PopoverButton className="p-1 text-gray-400 hover:text-gray-300">
                         <FaceSmileIcon className="w-6 h-6" />
-                    </Popover.Button>
-                    <Popover.Panel className="absolute z-10 right-0 bottom-full">
+                    </PopoverButton>
+                    <PopoverPanel className="absolute z-10 right-0 bottom-full">
                         <EmojiPicker
                        theme="dark" 
                        onEmojiClick={(ev) => 
@@ -210,7 +210,7 @@ const MessageInput = ({conversation = null}) => {
                        }
                         >
                         </EmojiPicker>
-                    </Popover.Panel>
+                    </PopoverPanel>
                 </Popover>
                 <button onClick={onLikeClick} className="p-1 text-gray-400 hover:text-gray-300">
                     <HandThumbUpIcon className="w-6 h-6" />
